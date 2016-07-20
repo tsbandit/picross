@@ -63,7 +63,7 @@ window.onload = function() {
   if(param_state === null)
     state = default_state;
   else
-    state = JSON.parse(param_state);
+    state = JSON.parse(atob(param_state));
   var a = state.a;
   grid = state.grid;
 
@@ -171,6 +171,7 @@ var generate = function() {
   };
 
   var str = JSON.stringify(state);
+  str = btoa(str);
   str = encodeURIComponent(str);
   textarea.value = window.location.href.split('?')[0] + '?state=' + str;
 };
